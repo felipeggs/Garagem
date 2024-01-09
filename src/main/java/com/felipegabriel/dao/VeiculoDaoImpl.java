@@ -10,7 +10,7 @@ import com.felipegabriel.dao.rowMapper.VeiculoRowMapper;
 import com.felipegabriel.model.Veiculo;
 
 @Repository
-public class VeiculoDao extends AbstractDaoImpl<Veiculo>{
+public class VeiculoDaoImpl extends AbstractDaoImpl<Veiculo>{
 
 	@Override
 	public Veiculo inserir(Veiculo obj) throws Exception {

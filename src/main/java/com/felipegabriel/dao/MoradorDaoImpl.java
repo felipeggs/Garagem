@@ -1,6 +1,7 @@
 package com.felipegabriel.dao;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -10,7 +11,7 @@ import com.felipegabriel.dao.rowMapper.MoradorRowMapper;
 import com.felipegabriel.model.Morador;
 
 @Repository
-public class MoradorDao extends AbstractDaoImpl<Morador>{
+public class MoradorDaoImpl extends AbstractDaoImpl<Morador>{
 
 	@Override
 	public Morador inserir(Morador obj) throws Exception {
@@ -55,6 +56,12 @@ public class MoradorDao extends AbstractDaoImpl<Morador>{
 	public Morador buscarPorId(Long id) throws Exception {
 		String sql = "select * from Morador where id=?";
 		return jdbc.queryForObject(sql, new MoradorRowMapper(), id);
+	}
+	
+	public List<Morador> pesquisarMorador(String nome) throws Exception{
+		String sql = "select * from Morador where upper(nome) like ?";
+		nome = "%" + nome.toUpperCase().trim() + "%";
+		return jdbc.query(sql, new MoradorRowMapper(), nome);
 	}
 
 }
