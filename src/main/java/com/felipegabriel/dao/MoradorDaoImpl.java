@@ -16,16 +16,16 @@ public class MoradorDaoImpl extends AbstractDaoImpl<Morador>{
 	@Override
 	public Morador inserir(Morador obj) throws Exception {
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbc);
-		insert.setColumnNames(Arrays.asList("nome", "numero", "cpf", "numGaragem", "bloco"));
-		insert.setTableName("morador");
-		insert.setGeneratedKeyName("id");
+		insert.setColumnNames(Arrays.asList("Bloco", "Cpf", "Numero", "Nome", "NumGaragem"));
+		insert.setTableName("Morador");
+		insert.setGeneratedKeyName("Id");
 		
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("nome", obj.getNome());
-		param.addValue("numero", obj.getNumero());
-		param.addValue("cpf", obj.getCpf());
-		param.addValue("numGaragem", obj.getNumGaragem());
-		param.addValue("bloco", obj.getBloco());
+		param.addValue("Bloco", obj.getBloco());
+		param.addValue("Cpf", obj.getCpf());
+		param.addValue("Numero", obj.getNumero());
+		param.addValue("Nome", obj.getNome());
+		param.addValue("NumGaragem", obj.getNumGaragem());
 		
 		Number num = insert.executeAndReturnKey(param);
 		obj.setId(num.longValue());
@@ -34,8 +34,8 @@ public class MoradorDaoImpl extends AbstractDaoImpl<Morador>{
 
 	@Override
 	public Morador alterar(Morador obj) throws Exception {
-		String sql = "update Morador set nome=?, numero=?, cpf=?, numGaragem=?, bloco=? where id=?";
-		int result = jdbc.update(sql, obj.getNome(), obj.getNumero(), obj.getCpf(), obj.getNumGaragem(), obj.getBloco());
+		String sql = "update Morador set bloco=?, cpf=?, numero=?, nome=?, numGaragem=? where id=?";
+		int result = jdbc.update(sql, obj.getBloco(), obj.getCpf(), obj.getNumero(), obj.getNome(), obj.getNumGaragem(), obj.getId());
 		if(result > 0) {
 			return obj;
 		}

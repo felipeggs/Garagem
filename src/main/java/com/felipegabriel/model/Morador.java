@@ -1,42 +1,23 @@
 package com.felipegabriel.model;
 
 public class Morador extends BaseEntity {
-	private String nome;
-	private String numero;
-	private String cpf;
-	private String numGaragem;
 	private String bloco;
-
-	public String getNome() {
-		return nome;
+	private String cpf;
+	private String numero;
+	private String nome;
+	private String numGaragem;
+	
+	public Morador() {
+		
 	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
+	
+	public Morador(String bloco, String cpf, String numero, String nome, String numGaragem) {
+		this.bloco = bloco;
 		this.cpf = cpf;
-	}
-
-	public String getNumGaragem() {
-		return numGaragem;
-	}
-
-	public void setNumGaragem(String numGaragem) {
+		this.numero = numero;
+		this.nome = nome;
 		this.numGaragem = numGaragem;
+		
 	}
 
 	public String getBloco() {
@@ -47,10 +28,43 @@ public class Morador extends BaseEntity {
 		this.bloco = bloco;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getNumGaragem() {
+		return numGaragem;
+	}
+
+	public void setNumGaragem(String numGaragem) {
+		this.numGaragem = numGaragem;
+	}
+	
 	@Override
 	public String toString() {
-		return "Morador [nome=" + nome + ", numero=" + numero + ", cpf=" + cpf + ", numGaragem=" + numGaragem
-				+ ", bloco=" + bloco + "]";
+		return "Morador: \nBloco: " + bloco + "\nCPF: " + cpf + "\nNumero: " + numero + "\nNome: " + nome + "\nNumGaragem: " + numGaragem;
 	}
+	
+	
 
 }

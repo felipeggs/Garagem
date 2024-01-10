@@ -13,10 +13,10 @@ public class VeiculoRowMapper implements RowMapper<Veiculo>{
 	public Veiculo mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Veiculo veiculo = new Veiculo();
 		
-		veiculo.setId(rs.getLong("id"));
-		veiculo.setCor(rs.getString("cor"));
-		veiculo.setMarca(rs.getString("marca"));
-		veiculo.setPlaca(rs.getString("placa"));
+		veiculo.setId(rs.getLong("Id"));
+		veiculo.setCor(rs.getString("Cor"));
+		veiculo.setPlaca(rs.getString("Placa"));
+		veiculo.setMarca(rs.getString("Marca"));
 		return veiculo;
 	}
 	

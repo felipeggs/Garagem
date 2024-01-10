@@ -13,7 +13,7 @@ import com.felipegabriel.model.Morador;
 public class MoradorService extends AbstractService<Morador>{
 	
 	@Autowired
-	private MoradorDaoImpl dao;
+	MoradorDaoImpl dao;
 
 	@Override
 	public AbstractDao<Morador> getDao() {

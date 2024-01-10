@@ -14,11 +14,11 @@ public class MoradorRowMapper implements RowMapper<Morador>{
 		Morador morador = new Morador();
 		
 		morador.setId(rs.getLong("id"));
-		morador.setNome(rs.getString("nome"));
+		morador.setNome(rs.getString("bloco"));
 		morador.setCpf(rs.getString("cpf"));
 		morador.setNumero(rs.getString("numero"));
-		morador.setNumGaragem(rs.getString("numGarangem"));
-		morador.setBloco(rs.getString("bloco"));
+		morador.setNumGaragem(rs.getString("nome"));
+		morador.setBloco(rs.getString("numGaragem"));
 		return morador;
 	}
 

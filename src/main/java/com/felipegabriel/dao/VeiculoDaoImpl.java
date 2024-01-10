@@ -15,15 +15,15 @@ public class VeiculoDaoImpl extends AbstractDaoImpl<Veiculo>{
 	@Override
 	public Veiculo inserir(Veiculo obj) throws Exception {
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbc);
-		insert.setColumnNames(Arrays.asList("cor, plca, marca"));
-		insert.setTableName("veiculo");
-		insert.setGeneratedKeyName("id");
+		insert.setColumnNames(Arrays.asList("Cor", "Placa","Marca"));
+		insert.setTableName("Veiculo");
+		insert.setGeneratedKeyName("Id");
 		
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		
-		param.addValue("cor", obj.getCor());
-		param.addValue("placa", obj.getPlaca());
-		param.addValue("marca", obj.getMarca());
+		param.addValue("Cor", obj.getCor());
+		param.addValue("Placa", obj.getPlaca());
+		param.addValue("Marca", obj.getMarca());
 		
 		Number num = insert.executeAndReturnKey(param);
 		obj.setId(num.longValue());
@@ -33,8 +33,8 @@ public class VeiculoDaoImpl extends AbstractDaoImpl<Veiculo>{
 
 	@Override
 	public Veiculo alterar(Veiculo obj) throws Exception {
-		String sql = "update Veiculo set cor=?, placa=?, marca=? where id=?";
-		int result = jdbc.update(sql, obj.getId());
+		String sql = "update Veiculo set Cor=?, Placa=?, Marca=? where Id=?";
+		int result = jdbc.update(sql, obj.getCor(),obj.getPlaca(), obj.getMarca(), obj.getId());
 		if(result > 0) {
 			return obj;
 		}
@@ -43,7 +43,7 @@ public class VeiculoDaoImpl extends AbstractDaoImpl<Veiculo>{
 
 	@Override
 	public boolean excluir(Veiculo obj) throws Exception {
-		String sql = "delete from Veiculo where id=?";
+		String sql = "delete from Veiculo where Id=?";
 		int result = jdbc.update(sql, obj.getId());
 		if(result > 0) {
 			return true;
@@ -53,7 +53,7 @@ public class VeiculoDaoImpl extends AbstractDaoImpl<Veiculo>{
 
 	@Override
 	public Veiculo buscarPorId(Long id) throws Exception {
-		String sql = "Select * from Veiculo where id=?";
+		String sql = "Select * from Veiculo where Id=?";
 		return jdbc.queryForObject(sql, new VeiculoRowMapper(), id);
 	}
 
